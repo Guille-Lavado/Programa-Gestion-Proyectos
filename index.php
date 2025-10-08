@@ -5,8 +5,8 @@ require 'lib/Router.php';
 $router = new Router();
 
 // Definir rutas simples
-$router->add('/daw_servidor/forms/index.php', 'InicioController@index');
-$router->add('/daw_servidor/forms/procesarDatos', 'InicioController@procesarDatos');
+$router->add('/Programa-Gestion-Proyectos/index.php', 'InicioController@index');
+$router->add('/Programa-Gestion-Proyectos/procesarDatos', 'InicioController@procesarDatos');
 // Procesar la ruta actual
 
 $router->dispatch($_SERVER['REQUEST_URI']);
