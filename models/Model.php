@@ -3,7 +3,7 @@ class Model
 {
     public function getProyectos(): array
     {
-        $this->proyectos = [
+        return [
             [
                 'Nombre' => 'Intranet Corporativa',
                 'Descripción' => 'Desarrollo de una intranet para

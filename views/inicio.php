@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestor de Proyectos</title>
-    <link rel="stylesheet" href="/daw_servidor/forms/public/css/style.css">
+    <link rel="stylesheet" href="/Programa-Gestion-Proyectos/public/css/style.css">
 </head>
 <body>
     <div class="container">
@@ -52,7 +52,7 @@
                 </label>
             </div>
             <button type="submit">Filtrar</button>
-            <a href="/daw_servidor/forms/index.php">Limpiar</a>
+            <a href="/Programa-Gestion-Proyectos/index.php">Limpiar</a>
         </form>
         <p>Mostrando <?= count($proyectosFiltrados) ?> proyectos</p>
         <div class="proyectos">
