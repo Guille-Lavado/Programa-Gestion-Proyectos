@@ -1,6 +1,44 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    margin: 20px;
+    background: #f5f5f5;
+}
+
+.container {
+    background: white;
     padding: 20px;
+    border-radius: 5px;
+}
+
+.filtro {
+    margin-bottom: 10px;
+}
+
+.proyecto {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.tipo, .estado {
+    display: inline-block;
+    padding: 3px 6px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.tipo {
+    background: #e0e0e0;
+}
+
+.estado {
+    background: #ffcc80;
+}
+
+.tecnologia {
+    background: #bbdefb;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-right: 5px;
 }
