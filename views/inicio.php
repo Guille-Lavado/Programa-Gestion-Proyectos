@@ -52,7 +52,7 @@
                 </label>
             </div>
             <button type="submit">Filtrar</button>
-            <a href="/Programa-Gestion-Proyectos/index.php">Limpiar</a>
+            <a href="/Programa-Gestion-Proyectos/">Limpiar</a>
         </form>
         <p>Mostrando <?= count($proyectosFiltrados) ?> proyectos</p>
         <div class="proyectos">
