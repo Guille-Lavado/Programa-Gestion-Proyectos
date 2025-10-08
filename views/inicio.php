@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>FORMULARIO</h1>
-    <form name="form" action="/daw_servidor/forms/procesarDatos">
+    <form name="form" action="/Programa-Gestion-Proyectos/procesarDatos">
         <div>
             <label>Nombre: </label>
             <input type="text" name="nombre" value="" />

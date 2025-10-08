@@ -2,7 +2,7 @@
 
 class InicioController {
     public function index() {
-        if ( array_key_exists("msg",$_GET)){
+        if (array_key_exists("msg",$_GET)){
             $message = $_GET["msg"];
         }else
         {
