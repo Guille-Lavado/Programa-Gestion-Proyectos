@@ -1,0 +1,142 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+button,
+.btn-limpiar {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+button {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-limpiar {
+    background: #7f8c8d;
+    color: white;
+    display: inline-block;
+}
+
+button:hover {
+    background: #219653;
+}
+
+.btn-limpiar:hover {
+    background: #6c7879;
+}
+
+.proyectos {
+    padding: 20px;
+}
+
+.proyectos h2 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.proyecto {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #fafafa;
+}
+
+.proyecto:hover {
+    background: #f0f0f0;
+}
+
+.proyecto h3 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+}
+
+.descripcion {
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.detalles {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.tipo,
+.estado {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+.tipo {
+    background: #d6eaf8;
+    color: #1a5276;
+}
+
+.estado {
+    color: white;
+}
+.tecnologias-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tecnologia {
+    background: #3498db;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.8em;
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 10px;
+    }
+
+    .botones {
+        flex-direction: column;
+    }
+
+    .detalles {
+        flex-direction: column;
+    }
+}
