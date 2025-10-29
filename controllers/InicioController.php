@@ -25,7 +25,7 @@ class InicioController
 
             // Filtro por tipo
             if ($proyecto["tipo"] === $tipo) {
-                # $hayFiltro = true;
+                $hayFiltro = true;
             }
 
             // Filtro por tecnologías
@@ -37,7 +37,7 @@ class InicioController
             }
             // Filtro por estado
             if ($proyecto["estado"] === $estado) {
-                # $hayFiltro = true;
+                $hayFiltro = true;
             }
 
             if ($hayFiltro) {
