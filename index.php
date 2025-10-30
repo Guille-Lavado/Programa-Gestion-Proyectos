@@ -1,6 +1,7 @@
 <?php
 require 'lib/Router.php';
 
+// Ruta absoluta del server
 $route = explode($_SERVER["DOCUMENT_ROOT"], str_replace("\\", "/", __DIR__))[1];
 
 // Crear instancia del Router

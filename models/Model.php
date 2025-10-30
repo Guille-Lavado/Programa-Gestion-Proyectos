@@ -43,5 +43,64 @@ class Model
     {
         return $this->proyectos;
     }
+
+    public function getTiposUnicos(): array
+    {
+        return array_unique(array_column($this->proyectos, "tipo"));
+    }
+
+    public function getTecnologiasUnicas(): array
+    {
+        $tecnologiasUnicas = [];
+        foreach ($this->proyectos as $proyecto) {
+            $tecnologiasUnicas = array_merge($tecnologiasUnicas, $proyecto["tecnologias"]);
+        }
+        return array_unique($tecnologiasUnicas);
+    }
+
+    public function getEstadosUnicos(): array
+    {
+        return array_unique(array_column($this->proyectos, "estado"));
+    }
+
+    public function aplicarFiltros($nombre, $tipo, $tecnologias, $estado): array
+    {
+        if (!$nombre && !$tipo && !$tecnologias && !$estado) {
+            return $this->proyectos;
+        }
+
+        $proyectosFiltrados = [];
+        foreach ($this->proyectos as $proyecto) {
+            $hayFiltro = false;
+
+            // Filtro por nombre
+            if (stripos($proyecto["nombre"], $nombre) != false) {
+                $hayFiltro = true;
+            }
+
+            // Filtro por tipo
+            if ($proyecto["tipo"] === $tipo) {
+                $hayFiltro = true;
+            }
+
+            // Filtro por tecnologías
+            foreach ($tecnologias as $tec) {
+                if (in_array($tec, $proyecto["tecnologias"])) {
+                    $hayFiltro = true;
+                    break;
+                }
+            }
+            // Filtro por estado
+            if ($proyecto["estado"] === $estado) {
+                $hayFiltro = true;
+            }
+
+            if ($hayFiltro) {
+                $proyectosFiltrados[] = $proyecto;
+            }
+        }
+
+        return $proyectosFiltrados;
+    }
 }
 ?>

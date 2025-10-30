@@ -6,6 +6,36 @@
     <link rel="stylesheet" href="public/css/style.css">
 </head>
 <body>
+    <?php
+        // Función para mostrar tecnologías
+        function mostrarTecnologias($tecnologias)
+        {
+            $html = "";
+            foreach ($tecnologias as $tec) {
+                $html .= '<span class="tecnologia">' . $tec . "</span> ";
+            }
+            return $html;
+        }
+
+        // Función para mostrar un proyecto
+        function mostrarProyecto($proyecto)
+        {
+            $html = '<div class="proyecto">';
+            $html .= "<h3>" . $proyecto["nombre"] . "</h3>";
+            $html .= '<p class="descripcion">' . $proyecto["descripcion"] . "</p>";
+            $html .= '<div class="detalles">';
+            $html .= '<span class="tipo">' . $proyecto["tipo"] . "</span>";
+            $html .= '<span class="estado">' . $proyecto["estado"] . "</span>";
+            $html .= "</div>";
+            $html .=
+                '<div class="tecnologias">' .
+                mostrarTecnologias($proyecto["tecnologias"]) .
+                "</div>";
+            $html .= "</div>";
+            return $html;
+        }
+    ?>
+
     <div class="container">
         <h1>Gestor de Proyectos</h1>
         <form method="GET">
@@ -39,14 +69,14 @@
                 </select>
             </div>
             <button type="submit">Filtrar</button>
-            <a class="btn-limpiar" href="/Programa-Gestion-Proyectos/">Limpiar</a>
+            <a class="btn-limpiar" href="/programa-gestion-proyectos/">Limpiar</a>
         </form>
         <p>Mostrando <?= count($proyectosFiltrados) ?> proyectos</p>
         <div class="proyectos">
             <?php foreach ($proyectosFiltrados as $proyecto): ?>
-            <?= InicioController::mostrarProyecto($proyecto) ?>
+            <?= mostrarProyecto($proyecto) ?>
             <?php endforeach; ?>
         </div>
-        <p>Total: <?= count($proyectos) ?></p>
+        <p>Total: <?= $proyectos_length ?></p>
     </div>
 </body>
