@@ -9,6 +9,7 @@ $router = new Router();
 
 // Definir rutas simples
 $router->add($route."/", 'InicioController@index');
+$router->add($route."/sesion", 'SesionController@index');
 // Procesar la ruta actual
 
 $router->dispatch($_SERVER['REQUEST_URI']);

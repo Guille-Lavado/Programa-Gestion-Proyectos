@@ -3,6 +3,8 @@ class InicioController
 {
     public function index()
     {
+        self::sesionLog();
+
         require_once "models/Model.php";
         $model = new Model();
 
@@ -12,22 +14,36 @@ class InicioController
         $tecnologias = $_GET["tecnologias"] ?? [];
         $estado = $_GET["estado"] ?? "";
 
+        echo $_COOKIE["idioma"];
+
         // Aplicar filtros
         $proyectosFiltrados = $model->aplicarFiltros($nombre, $tipo, $tecnologias, $estado);
 
-        // Obtener tipos únicos para los filtros
+        // Obtener únicos para los filtros
         $tipos = $model->getTiposUnicos();
-        
-        // Obtener tecnologías únicas para los filtros
         $tecnologiasUnicas = $model->getTecnologiasUnicas();
-
-        // Obtener estados únicas para los filtros
         $estadosUnicos = $model->getEstadosUnicos();
 
         $proyectos_length = count($model->getProyectos());
 
         // Cargamos el View
         require_once "views/inicio.php";
+    }
+
+    public function sesionLog()
+    {
+        session_start();
+        
+        if (!isset($_SESSION["nombre"]) || !isset($_SESSION["contrasenya"]) || !isset($_SESSION["time"])) {
+            session_destroy();
+            header("location: sesion");
+        }
+
+        
+        if (time() - $_SESSION["time"] > 120) {
+            session_destroy();
+            header("location: sesion");
+        }
     }
 }
 ?>
