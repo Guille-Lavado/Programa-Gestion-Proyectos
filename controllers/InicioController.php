@@ -14,7 +14,8 @@ class InicioController
         $tecnologias = $_GET["tecnologias"] ?? [];
         $estado = $_GET["estado"] ?? "";
 
-        echo $_COOKIE["idioma"];
+        // Obtener idioma de la cookie
+        $idioma = $_COOKIE["idioma"] ?? "es";
 
         // Aplicar filtros
         $proyectosFiltrados = $model->aplicarFiltros($nombre, $tipo, $tecnologias, $estado);
@@ -26,24 +27,32 @@ class InicioController
 
         $proyectos_length = count($model->getProyectos());
 
-        // Cargamos el View
+        // Cargamos el View pasando el idioma
         require_once "views/inicio.php";
     }
 
     public function sesionLog()
     {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         
-        if (!isset($_SESSION["nombre"]) || !isset($_SESSION["contrasenya"]) || !isset($_SESSION["time"])) {
+        // Verificar existencia y validez temporal de la sesión
+        if (!isset($_SESSION["nombre"]) || !isset($_SESSION["time"])) {
             session_destroy();
             header("location: sesion");
+            exit;
         }
 
-        
+        // Verificar expiración (2 minutos = 120 segundos)
         if (time() - $_SESSION["time"] > 120) {
             session_destroy();
             header("location: sesion");
+            exit;
         }
+
+        // Actualizar tiempo de sesión en cada interacción
+        $_SESSION["time"] = time();
     }
 }
 ?>

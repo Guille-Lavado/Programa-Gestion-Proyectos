@@ -13,15 +13,44 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    padding: 20px;
+}
+
+/* Estilos para formularios de login */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
 }
 
 input[type="text"],
+input[type="password"],
 select {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #bdc3c7;
     border-radius: 4px;
     font-size: 14px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
 }
 
 .botones {
@@ -31,16 +60,20 @@ select {
 }
 
 button,
-.btn-limpiar {
+.btn-limpiar,
+.btn-submit {
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
     font-size: 14px;
+    display: inline-block;
+    text-align: center;
 }
 
-button {
+button,
+.btn-submit {
     background: #27ae60;
     color: white;
 }
@@ -48,15 +81,25 @@ button {
 .btn-limpiar {
     background: #7f8c8d;
     color: white;
-    display: inline-block;
 }
 
-button:hover {
+button:hover,
+.btn-submit:hover {
     background: #219653;
 }
 
 .btn-limpiar:hover {
     background: #6c7879;
+}
+
+.error {
+    color: #e74c3c;
+    background: #fadbd8;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border: 1px solid #e74c3c;
+    font-size: 14px;
 }
 
 .proyectos {
@@ -113,6 +156,23 @@ button:hover {
 .estado {
     color: white;
 }
+
+.estado[data-estado="Finalizado"] {
+    background: #27ae60;
+}
+
+.estado[data-estado="En progreso"] {
+    background: #3498db;
+}
+
+.estado[data-estado="Bloqueado"] {
+    background: #e74c3c;
+}
+
+.estado[data-estado="Pendiente"] {
+    background: #f39c12;
+}
+
 .tecnologias-container {
     display: flex;
     flex-wrap: wrap;
@@ -127,9 +187,46 @@ button:hover {
     font-size: 0.8em;
 }
 
+.checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.checkbox-label input {
+    width: auto;
+    margin-right: 5px;
+}
+
+.filtro {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.filtro label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+}
+
 @media (max-width: 600px) {
     .container {
         margin: 10px;
+        padding: 15px;
+    }
+
+    .login-container {
+        margin: 20px auto;
+        padding: 15px;
     }
 
     .botones {
@@ -138,5 +235,11 @@ button:hover {
 
     .detalles {
         flex-direction: column;
+    }
+
+    .checkbox-label {
+        display: flex;
+        margin-right: 0;
+        margin-bottom: 8px;
     }
 }

@@ -65,37 +65,48 @@ class Model
 
     public function aplicarFiltros($nombre, $tipo, $tecnologias, $estado): array
     {
-        if (!$nombre && !$tipo && !$tecnologias && !$estado) {
+        // Si no hay filtros, devolver todos los proyectos
+        if (empty($nombre) && empty($tipo) && empty($tecnologias) && empty($estado)) {
             return $this->proyectos;
         }
 
         $proyectosFiltrados = [];
+        
         foreach ($this->proyectos as $proyecto) {
-            $hayFiltro = false;
+            $cumpleFiltros = true;
 
-            // Filtro por nombre
-            if (stripos($proyecto["nombre"], $nombre) != false) {
-                $hayFiltro = true;
-            }
-
-            // Filtro por tipo
-            if ($proyecto["tipo"] === $tipo) {
-                $hayFiltro = true;
-            }
-
-            // Filtro por tecnologías
-            foreach ($tecnologias as $tec) {
-                if (in_array($tec, $proyecto["tecnologias"])) {
-                    $hayFiltro = true;
-                    break;
+            // Filtro por nombre (búsqueda parcial case-insensitive)
+            if (!empty($nombre)) {
+                if (stripos($proyecto["nombre"], $nombre) === false) {
+                    $cumpleFiltros = false;
                 }
             }
-            // Filtro por estado
-            if ($proyecto["estado"] === $estado) {
-                $hayFiltro = true;
+
+            // Filtro por tipo (coincidencia exacta)
+            if (!empty($tipo) && $proyecto["tipo"] !== $tipo) {
+                $cumpleFiltros = false;
             }
 
-            if ($hayFiltro) {
+            // Filtro por tecnologías (al menos una debe coincidir)
+            if (!empty($tecnologias)) {
+                $coincideTecnologia = false;
+                foreach ($tecnologias as $tec) {
+                    if (in_array($tec, $proyecto["tecnologias"])) {
+                        $coincideTecnologia = true;
+                        break;
+                    }
+                }
+                if (!$coincideTecnologia) {
+                    $cumpleFiltros = false;
+                }
+            }
+
+            // Filtro por estado (coincidencia exacta)
+            if (!empty($estado) && $proyecto["estado"] !== $estado) {
+                $cumpleFiltros = false;
+            }
+
+            if ($cumpleFiltros) {
                 $proyectosFiltrados[] = $proyecto;
             }
         }
